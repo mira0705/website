@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Абай Университеті | МФИ Факультеті</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #8B0000;
+            --accent: #D4AF37;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
+            --gray: #5a6268;
+            --card-bg: rgba(26, 26, 46, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(90, 98, 104, 0.92), rgba(90, 98, 104, 0.92)), 
+                        url('https://abaiuniversity.edu.kz/wp-content/uploads/2023/01/main-building.jpg') no-repeat center/cover fixed;
+            color: #f0f0f0;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        header img {
+            height: 70px;
+            margin-right: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .header-info p {
+            font-size: 0.95rem;
+            margin: 3px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-info i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        nav {
+            background: rgba(0, 20, 80, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            max-width: 1300px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+        
+        .nav-menu li {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.1rem 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            height: 100%;
+        }
+        
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .nav-menu a i {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+        
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        section {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #fff;
+            margin-bottom: 1.8rem;
+            font-size: 2.1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 15px;
+            color: var(--accent);
+            background: rgba(212, 175, 55, 0.15);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        h3 {
+            color: var(--accent);
+            margin: 1.8rem 0 1rem;
+            font-size: 1.6rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            height: 25px;
+            width: 6px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .department-card {
+            background: rgba(30, 30, 46, 0.7);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+        }
+        
+        .department-card h3 {
+            color: #fff;
+            font-size: 1.7rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+        
+        .department-card h3 i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .program-tabs {
+            display: flex;
+            margin-bottom: 1.8rem;
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .program-tabs button {
+            flex: 1;
+            padding: 1.2rem 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #ddd;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .program-tabs button i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        
+        .program-tabs button:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .program-tabs button.active {
+            color: white;
+            background: var(--primary);
+        }
+        
+        .program-content {
+            display: none;
+            padding: 1.8rem;
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .program-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .teacher-card {
+            display: flex;
+            background: rgba(30, 30, 46, 0.7);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .teacher-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            transform: translateX(8px);
+        }
+        
+        .teacher-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 2rem;
+            border: 3px solid var(--accent);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .teacher-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .teacher-info h4 {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .teacher-info p {
+            margin: 0.6rem 0;
+            color: #ddd;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .teacher-info strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .announcement-card {
+            background: rgba(30, 30, 46, 0.7);
+            padding: 1.8rem;
+            margin-bottom: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: all 0.4s;
+            border-left: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .announcement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .announcement-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .announcement-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+        }
+        
+        .announcement-card h4 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .announcement-card h4 i {
+            margin-right: 12px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .announcement-card .date {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+        }
+        
+        .announcement-card p {
+            color: #ddd;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.9rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 1.8rem;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-btn:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        #contact {
+            background: rgba(15, 15, 30, 0.95);
+            color: #f0f0f0;
+            padding: 4rem 2rem;
+            border-radius: 0;
+            margin-bottom: 0;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: rgba(30, 30, 46, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+            border-left: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s ease;
+        }
+        
+        .contact-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-card h3 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 1.8rem;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            padding-left: 0;
+        }
+        
+        .contact-card h3 i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.8rem;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin: 1rem 0;
+            color: #ddd;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent);
+            min-width: 25px;
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+        
+        .map-container {
+            height: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1.8rem;
+            background: linear-gradient(45deg, #2c3e50, #4a6491);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://static.vecteezy.com/system/resources/previews/002/909/569/non_2x/almaty-city-kazakhstan-map-free-vector.jpg') no-repeat center/cover;
+            opacity: 0.6;
+        }
+        
+        .map-container span {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin: 0 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-text {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .footer-text p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .floating-btn:hover {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .university-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .fact-card {
+            background: rgba(30, 30, 46, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+        }
+        
+        .fact-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .fact-card h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .fact-card p {
+            color: #ddd;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Statistics section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .stat-card {
+            background: rgba(30, 30, 46, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .stat-text {
+            color: #ddd;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1100px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 1.5rem;
+                justify-content: center;
+            }
+            
+            .header-info {
+                align-items: center;
+                margin-top: 1rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                flex: 1 0 33%;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+            
+            .teacher-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .teacher-card img {
+                margin: 0 auto 1.8rem;
+            }
+            
+            .program-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .program-tabs button {
+                flex: 1 0 50%;
+                padding: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            section {
+                padding: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h2 i {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .nav-menu li {
+                flex: 1 0 50%;
+            }
+            
+            .department-card, .teacher-card, .announcement-card {
+                padding: 1.8rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .university-facts {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            header img {
+                height: 60px;
+                margin-right: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .nav-menu li {
+                flex: 1 0 100%;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .program-tabs button {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://abaiuniversity.edu.kz/wp-content/uploads/2020/12/logo-1.png" alt="Абай Университеті логотипі">
+                <div class="header-text">
+                    <h1>Математика, Физика және Информатика Факультеті</h1>
+                    <p>Абай атындағы Қазақ ұлттық педагогикалық университеті</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <p><i class="fas fa-phone-alt"></i> +7 (727) 272-75-87</p>
+                <p><i class="fas fa-envelope"></i> mfi@abaiuniversity.edu.kz</p>
+                <p><i class="fas fa-map-marker-alt"></i> Алматы, Төле би 86</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#" data-section="home"><i class="fas fa-home"></i>Басты бет</a></li>
+            <li><a href="#" data-section="faculty"><i class="fas fa-building"></i>Факультет</a></li>
+            <li><a href="#" data-section="education"><i class="fas fa-graduation-cap"></i>Білім</a></li>
+            <li><a href="#" data-section="science"><i class="fas fa-flask"></i>Ғылым</a></li>
+            <li><a href="#" data-section="announcements"><i class="fas fa-bullhorn"></i>Хабарландыру</a></li>
+            <li><a href="#" data-section="teachers"><i class="fas fa-chalkboard-teacher"></i>Оқытушылар</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="active">
+            <h2><i class="fas fa-home"></i> Қош келдіңіз!</h2>
+            <p>Абай атындағы Қазақ ұлттық педагогикалық университетінің <strong>Математика, Физика және Информатика факультетіне</strong> арналған ресми веб-парақшасына қош келдіңіз! Біздің факультет - білім мен ғылымның көшбасшы орталығы, Қазақстандағы физика-математикалық білім берудің флагманы.</p>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-university"></i> Факультет туралы</h3>
+                <p>1928 жылы құрылған факультет университеттің алғашқы факультеттерінің бірі болып табылады. Қазіргі уақытта 4 кафедрадан тұрады:</p>
+                <ul>
+                    <li><strong>Физика кафедрасы</strong> - жаңа технологиялар мен зерттеулер, эксперименттік зертханалар</li>
+                    <li><strong>Математика және математикалық моделдеу кафедрасы</strong> - теориялық және қолданбалы зерттеулер, сандық әдістер</li>
+                    <li><strong>Информатика және білімді ақпараттандыру кафедрасы</strong> - IT саласында білім беру, цифрлық технологиялар</li>
+                    <li><strong>Математика, физика және информатика оқыту әдістемесі кафедрасы</strong> - заманауи педагогикалық әдістер, STEM білім беру</li>
+                </ul>
+                <p><strong>Миссиямыз:</strong> Физика, математика және информатика саласында жоғары білікті мамандар даярлау, ғылыми зерттеулерді дамыту және инновациялық технологияларды енгізу.</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">2500+</div>
+                    <div class="stat-text">Студент</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-text">Оқытушы</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33</div>
+                    <div class="stat-text">Ғылыми жоба</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-text">Ғылыми мақала</div>
+                </div>
+            </div>
+            
+            <div class="university-facts">
+                <div class="fact-card">
+                    <i class="fas fa-award"></i>
+                    <h4>Білім берудегі үздік</h4>
+                    <p>Факультет Қазақстан Республикасы Білім министрлігінің "Үздік білім беру орны" номинациясын жеңіп алды</p>
+                </div>
+                <div class="fact-card">
+                    <i class="fas fa-globe"></i>
+                    <h4>Халықаралық ынтымақтастық</h4>
+                    <p>Еуропа, Азия және Американың 20-дан астам жоғары оқу орындарымен ынтымақтастық</p>
+                </div>
+                <div class="fact-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Заманауи инфрақұрылым</h4>
+                    <p>12 оқу-ғылыми зертхана, 9 компьютерлік сынып, STEM орталығы және IT-инкубатор</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faculty">
+            <h2><i class="fas fa-building"></i> Факультеттер</h2>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-atom"></i> Физика факультеті</h3>
+                <p><strong>Кафедралар:</strong> Физика кафедрасы, Математика, физика және информатика оқыту әдістемесі кафедрасы</p>
+                <p><strong>Мамандықтар:</strong></p>
+                <ul>
+                    <li>Физика (бакалавриат) - 6B05301</li>
+                    <li>Физика және астрономия (бакалавриат) - 6B05302</li>
+                    <li>Физика (ағылшын тілінде) (бакалавриат) - 6B05303</li>
+                    <li>Физика (магистратура) - 7B05301</li>
+                    <li>Физикалық процестерді модельдеу (магистратура) - 7B05302</li>
+                    <li>Физика (докторантура) - 8D05301</li>
+                </ul>
+                <p><strong>Зертханалар:</strong> 12 оқу-ғылыми зертхана, STEM-парк, робототехника зертханасы, нанотехнологиялар орталығы</p>
+                <p><strong>Ғылыми бағыттар:</strong> Нанотехнологиялар, Жарықтың материалдармен әрекеттесуі, Астрофизика, Жаңа материалдарды зерттеу</p>
+            </div>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-square-root-alt"></i> Математика факультеті</h3>
+                <p><strong>Кафедралар:</strong> Математика және математикалық моделдеу кафедрасы</p>
+                <p><strong>Мамандықтар:</strong></p>
+                <ul>
+                    <li>Математика (бакалавриат) - 6B05401</li>
+                    <li>Қолданбалы математика (бакалавриат) - 6B05402</li>
+                    <li>Математика-физика (бакалавриат) - 6B05403</li>
+                    <li>Математика (магистратура) - 7B05401</li>
+                    <li>Қолданбалы математика (магистратура) - 7B05402</li>
+                    <li>Математика (докторантура) - 8D05401</li>
+                </ul>
+                <p><strong>Зерттеу бағыттары:</strong> Математикалық моделдеу, Сандық әдістер, Алгебра және геометрия, Дифференциалдық теңдеулер, Оптимизация әдістері</p>
+                <p><strong>Зерттеу орталықтары:</strong> Сандық әдістер лабораториясы, Математикалық моделдеу орталығы, Алгебралық зерттеулер топтамасы</p>
+            </div>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-laptop-code"></i> Информатика факультеті</h3>
+                <p><strong>Кафедралар:</strong> Информатика және білімді ақпараттандыру кафедрасы</p>
+                <p><strong>Мамандықтар:</strong></p>
+                <ul>
+                    <li>Информатика (бакалавриат) - 6B06101</li>
+                    <li>Ақпараттық жүйелер (бакалавриат) - 6B06102</li>
+                    <li>Компьютерлік ғылымдар (бакалавриат) - 6B06103</li>
+                    <li>Информатика (магистратура) - 7B06101</li>
+                    <li>Ақпараттық жүйелерді жобалау (магистратура) - 7B06102</li>
+                    <li>Информатика (докторантура) - 8D06101</li>
+                </ul>
+                <p><strong>Инфрақұрылым:</strong> 9 компьютерлік сынып, BilimLab орталығы, IT-инкубатор, Жасанды интеллект лабораториясы, Сайберқауіпсіздік орталығы</p>
+                <p><strong>Ғылыми бағыттар:</strong> Жасанды интеллект, Деректер талдауы, Сайберқауіпсіздік, Облактік технологиялар, Робототехника</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Білім беру бағдарламалары</h2>
+            
+            <div class="program-tabs">
+                <button class="active" onclick="showProgram('bachelor')"><i class="fas fa-user-graduate"></i>Бакалавриат</button>
+                <button onclick="showProgram('master')"><i class="fas fa-book-reader"></i>Магистратура</button>
+                <button onclick="showProgram('phd')"><i class="fas fa-user-tie"></i>Докторантура</button>
+            </div>
+            
+            <div id="bachelor" class="program-content active">
+                <h3>Бакалавриат бағдарламалары</h3>
+                <p>Бакалавриат бағдарламалары 4 жылға арналған және студенттерге таңдалған салада негізгі білім мен дағдыларды қамтамасыз етеді.</p>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-atom"></i> Физика</h4>
+                    <p><strong>Мамандық кодтары:</strong> 6B05301, 6B05302, 6B05303 (ағылшын тілінде)</p>
+                    <p><strong>Негізгі пәндер:</strong> Жалпы физика, Теоретикалық механика, Электродинамика, Кванттық механика, Астрофизика</p>
+                    <p><strong>Тілдер:</strong> Қазақ, орыс, ағылшын</p>
+                    <p><strong>Керекті құжаттар:</strong> Білім туралы құжат, ҰТТ сертификаты, Денсаулық куәлігі, 4 фото 3x4</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-square-root-alt"></i> Математика</h4>
+                    <p><strong>Мамандық кодтары:</strong> 6B05401, 6B05402, 6B05403 (математика-физика)</p>
+                    <p><strong>Негізгі пәндер:</strong> Жоғары математика, Алгебра және геометрия, Дифференциалдық теңдеулер, Сандық әдістер, Дискретті математика</p>
+                    <p><strong>Тілдер:</strong> Қазақ, орыс</p>
+                    <p><strong>Керекті құжаттар:</strong> Білім туралы құжат, ҰТТ сертификаты, Денсаулық куәлігі, 4 фото 3x4</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-laptop-code"></i> Информатика</h4>
+                    <p><strong>Мамандық кодтары:</strong> 6B06101, 6B06102, 6B06103</p>
+                    <p><strong>Негізгі пәндер:</strong> Бағдарламалау негіздері, Деректер құрылымы, Алгоритмдер, Компьютерлік желілер, Жасанды интеллект</p>
+                    <p><strong>Тілдер:</strong> Қазақ, орыс</p>
+                    <p><strong>Керекті құжаттар:</strong> Білім туралы құжат, ҰТТ сертификаты, Денсаулық куәлігі, 4 фото 3x4</p>
+                </div>
+            </div>
+            
+            <div id="master" class="program-content">
+                <h3>Магистратура бағдарламалары</h3>
+                <p>Магистратура бағдарламалары 2 жылға арналған және студенттерге таңдалған салада тереңірек білім мен зерттеу дағдыларын қамтамасыз етеді.</p>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-atom"></i> Физика</h4>
+                    <p><strong>Мамандық коды:</strong> 7B05301</p>
+                    <p><strong>Бағыттар:</strong> Физика, Физикалық процестерді модельдеу, Нанотехнологиялар</p>
+                    <p><strong>Негізгі пәндер:</strong> Қазіргі физикалық зерттеулер әдістері, Материалтану, Наносистемалар, Статистикалық физика</p>
+                    <p><strong>Керекті құжаттар:</strong> Бакалавр дипломы, Өтініш, 2 ұсыныс хаты, Ғылыми жұмыстар тізімі</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-square-root-alt"></i> Математика</h4>
+                    <p><strong>Мамандық коды:</strong> 7B05401</p>
+                    <p><strong>Бағыттар:</strong> Математика, Қолданбалы математика, Математикалық моделдеу</p>
+                    <p><strong>Негізгі пәндер:</strong> Функционалды талдау, Оптималды басқару, Математикалық статистика, Есептеу математикасы</p>
+                    <p><strong>Керекті құжаттар:</strong> Бакалавр дипломы, Өтініш, 2 ұсыныс хаты, Ғылыми жұмыстар тізімі</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-laptop-code"></i> Информатика</h4>
+                    <p><strong>Мамандық коды:</strong> 7B06101</p>
+                    <p><strong>Бағыттар:</strong> Информатика, Ақпараттық жүйелерді жобалау, Жасанды интеллект, Сайберқауіпсіздік</p>
+                    <p><strong>Негізгі пәндер:</strong> Машиналық оқу, Большой деректерді өңдеу, Облактік есептеулер, Сайберқауіпсіздік негіздері</p>
+                    <p><strong>Керекті құжаттар:</strong> Бакалавр дипломы, Өтініш, 2 ұсыныс хаты, Ғылыми жұмыстар тізімі</p>
+                </div>
+            </div>
+            
+            <div id="phd" class="program-content">
+                <h3>Докторантура бағдарламалары</h3>
+                <p>Докторантура бағдарламалары 3 жылға арналған және ғылыми зерттеулерге бағытталған, ғылым докторы дәрежесін алуға мүмкіндік береді.</p>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-atom"></i> Физика</h4>
+                    <p><strong>Мамандық коды:</strong> 8D05301</p>
+                    <p><strong>Бағыттар:</strong> Нанофизика, Оптика, Астрофизика, Конденцияланған заттар физикасы</p>
+                    <p><strong>Ғылыми жетекшілер:</strong> 5 ғылым докторы</p>
+                    <p><strong>Керекті құжаттар:</strong> Магистр дипломы, Ғылыми жоба, Өтініш, 3 ұсыныс хаты, Жарияланған мақалалар</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-square-root-alt"></i> Математика</hh4>
+                    <p><strong>Мамандық коды:</strong> 8D05401</p>
+                    <p><strong>Бағыттар:</strong> Алгебра, Геометрия, Дифференциалдық теңдеулер, Оптимизация</p>
+                    <p><strong>Ғылыми жетекшілер:</strong> 6 ғылым докторы</p>
+                    <p><strong>Керекті құжаттар:</strong> Магистр дипломы, Ғылыми жоба, Өтініш, 3 ұсыныс хаты, Жарияланған мақалалар</p>
+                </div>
+                
+                <div class="department-card">
+                    <h4><i class="fas fa-laptop-code"></i> Информатика</h4>
+                    <p><strong>Мамандық коды:</strong> 8D06101</p>
+                    <p><strong>Бағыттар:</strong> Жасанды интеллект, Деректер талдауы, Сайберқауіпсіздік, Робототехника</p>
+                    <p><strong>Ғылыми жетекшілер:</strong> 4 ғылым докторы</p>
+                    <p><strong>Керекті құжаттар:</strong> Магистр дипломы, Ғылыми жоба, Өтініш, 3 ұсыныс хаты, Жарияланған мақалалар</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="science">
+            <h2><i class="fas fa-flask"></i> Ғылыми қызмет</h2>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-microscope"></i> Ғылыми зерттеулер</h3>
+                <p>2023-2024 оқу жылында факультетте 33 ғылыми жоба жүргізілуде, олардың ішінде Қазақстан Республикасы Білім және ғылым министрлігінің гранттарымен қаржыландырылатын 25 жоба бар.</p>
+                
+                <p><strong>Негізгі ғылыми бағыттар:</strong></p>
+                <ul>
+                    <li><strong>Физика:</strong> Нанотехнологиялар, Жарықтың материалдармен әрекеттесуі, Астрофизикалық зерттеулер, Жаңа материалдарды зерттеу</li>
+                    <li><strong>Математика:</strong> Математикалық моделдеу, Сандық әдістер, Оптимизация есептері, Алгебралық жүйелер</li>
+                    <li><strong>Информатика:</strong> Жасанды интеллект, Деректер талдауы, Сайберқауіпсіздік, Облактік технологиялар</li>
+                    <li><strong>Педагогика:</strong> STEM-білім беру, Цифрлық педагогика, Инновациялық оқыту әдістері</li>
+                </ul>
+                
+                <p><strong>Ғылыми қорлар:</strong> 2023 жылы ғылыми жобаларға 190 млн теңге қаржы бөлінді. Факультетте 3 диссертациялық кеңес жұмыс істейді.</p>
+            </div>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-laptop-house"></i> STEM-білім беру орталығы</h3>
+                <p>Факультетте STEM (Science, Technology, Engineering, Mathematics) бағытында инновациялық оқыту орталығы жұмыс істейді, онда студенттер заманауи технологиялармен жұмыс істеу дағдыларын игеру мүмкіндігіне ие.</p>
+                
+                <p><strong>Орталықтың негізгі бөлімшелері:</strong></p>
+                <ul>
+                    <li><strong>Робототехника зертханасы:</strong> Lego Mindstorms, Arduino, Raspberry Pi платформалары</li>
+                    <li><strong>3D-моделдеу бөлімі:</strong> 3D-принтерлер мен сканерлер, CAD жүйелері</li>
+                    <li><strong>BilimLab цифрлық ресурстар орталығы:</strong> Білім беру платформалары, интерактивті оқу материалдары</li>
+                    <li><strong>IT-инкубатор:</strong> Студенттік стартаптарды дамыту орталығы</li>
+                    <li><strong>Жасанды интеллект лабораториясы:</strong> GPU серверлер, Deep Learning платформалары</li>
+                </ul>
+                
+                <p><strong>Мекенжайы:</strong> №5 оқу корпусы, 3-қабат</p>
+            </div>
+            
+            <div class="department-card">
+                <h3><i class="fas fa-book-open"></i> Ғылыми басылымдар</h3>
+                <p>2023 жылы факультет оқытушылары 120-дан астам ғылыми мақаланы жариялады, оның ішінде Web of Science және Scopus базаларында индекстелетін 40 мақала бар.</p>
+                
+                <p><strong>Негізгі жарияланымдар:</strong></p>
+                <ul>
+                    <li>"Наноқұрылымды материалдардың оптикалық қасиеттері" - Physical Review B журналы</li>
+                    <li>"Дифференциалдық теңдеулерді шешудің сандық әдістері" - Journal of Computational Mathematics</li>
+                    <li>"Жасанды интеллект негізіндегі медициналық диагностика жүйесі" - Artificial Intelligence in Medicine</li>
+                    <li>"STEM-білім берудегі инновациялық тәсілдер" - International Journal of STEM Education</li>
+                </ul>
+                
+                <p><strong>Монографиялар:</strong> 8 монография, оның ішінде 3-і халықаралық баспаларда жарияланды</p>
+            </div>
+        </section>
+
+        <section id="announcements">
+            <h2><i class="fas fa-bullhorn"></i> Соңғы хабарландырулар</h2>
+            
+            <div class="announcement-card" onclick="showAnnouncement('a1')">
+                <h4><i class="fas fa-file-alt"></i> 2024-2025 оқу жылына құжат қабылдау</h4>
+                <span class="date">15 мамыр 2024</span>
+                <p>Бакалавриат, магистратура және докторантураға құжат қабылдау басталды. Құжаттарды №5 оқу корпусы, 203 кабинетте тапсыруға болады. Соңғы мерзім - 30 тамыз.</p>
+            </div>
+            
+            <div class="announcement-card" onclick="showAnnouncement('a2')">
+                <h4><i class="fas fa-calendar-alt"></i> Жазғы сессия кестесі</h4>
+                <span class="date">10 мамыр 2024</span>
+                <p>3 маусымнан 28 маусымға дейін жазғы сессия өтеді. Барлық студенттерге кестеге назар аударуды сұраймыз. Консультациялар сәрсенбі күндері өтеді.</p>
+            </div>
+            
+            <div class="announcement-card" onclick="showAnnouncement('a3')">
+                <h4><i class="fas fa-graduation-cap"></i> Ғылыми гранттарға конкурс</h4>
+                <span class="date">5 мамыр 2024</span>
+                <p>Жас ғалымдарға арналған ғылыми гранттар конкурсы жарияланды. Өтініштерді 15 маусымға дейін тапсыруға болады. Грант сомасы 5 млн теңгеге дейін.</p>
+            </div>
+            
+            <div class="announcement-card" onclick="showAnnouncement('a4')">
+                <h4><i class="fas fa-trophy"></i> "Үздік оқытушы" конкурсы</h4>
+                <span class="date">3 мамыр 2024</span>
+                <p>Факультет аясында "Үздік оқытушы" конкурсы өткізіледі. Қатысу үшін өтініштерді 1 маусымға дейін тапсыру қажет. Жеңімпаздар 500 000 теңге жүлде алады.</p>
+            </div>
+        </section>
+
+        <section id="a1" class="announcement-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Артқа</button>
+            <h3>2024-2025 оқу жылына құжат қабылдау</h3>
+            <div class="date">15 мамыр 2024</div>
+            
+            <div class="department-card">
+                <h4>Бакалавриат</h4>
+                <p><strong>Мерзімі:</strong> 1 маусым - 30 тамыз 2024</p>
+                <p><strong>Қажетті құжаттар:</strong></p>
+                <ul>
+                    <li>Ұлттық тестілеу орталығының сертификаты (көшірме)</li>
+                    <li>Туу туралы куәлік (көшірме)</li>
+                    <li>8 фото 3x4</li>
+                    <li>Денсаулық куәлігі (086-ү нысаны)</li>
+                    <li>Диплом/аттестат (көшірме)</li>
+                    <li>Өтініш (үлгісі университет сайтында)</li>
+                </ul>
+                <p><strong>Қабылдау орны:</strong> №5 оқу корпусы, 203 кабинет</p>
+                <p><strong>Жұмыс кестесі:</strong> Дүйсенбі-жұма, 09:00-18:00 (түскі үзіліс 13:00-14:00)</p>
+            </div>
+        </section>
+
+        <section id="teachers">
+            <h2><i class="fas fa-chalkboard-teacher"></i> Оқытушылар құрамы</h2>
+            
+            <div class="teacher-card">
+                <img src="https://abaiuniversity.edu.kz/wp-content/uploads/2023/05/teacher1.jpg" alt="Шерипидин Хамраев">
+                <div class="teacher-info">
+                    <h4>Шерипидин Хамраев</h4>
+                    <p><strong>Лауазымы:</strong> Декан, доцент</p>
+                    <p><strong>Ғылыми дәрежесі:</strong> Техника ғылымдарының кандидаты</p>
+                    <p><strong>Тәжірибесі:</strong> 15 жыл</p>
+                    <p><strong>Ғылыми бағыты:</strong> Нанотехнологиялар, Оптикалық материалдар</p>
+                    <p><strong>Сабақ беретін пәндер:</strong> Физика, Қазіргі физикалық зерттеулер әдістері, Нанотехнологиялар негіздері</p>
+                    <p><strong>Ғылыми жетістіктері:</strong> 45 ғылыми мақала, 2 монография, 3 патент. Халықаралық конференциялардың жиі қатысушысы.</p>
+                </div>
+            </div>
+            
+            <div class="teacher-card">
+                <img src="https://abaiuniversity.edu.kz/wp-content/uploads/2023/05/teacher2.jpg" alt="Бердышев Әбдімәулен">
+                <div class="teacher-info">
+                    <h4>Бердышев Әбдімәулен Сүлейменұлы</h4>
+                    <p><strong>Лауазымы:</strong> Кафедра меңгерушісі, профессор</p>
+                    <p><strong>Ғылыми дәрежесі:</strong> Физика-математика ғылымдарының докторы</p>
+                    <p><strong>Тәжірибесі:</strong> 25 жыл</p>
+                    <p><strong>Ғылыми бағыты:</strong> Математикалық моделдеу, Сандық әдістер</p>
+                    <p><strong>Сабақ беретін пәндер:</strong> Математикалық анализ, Дифференциалдық теңдеулер, Сандық әдістер, Оптимизация</p>
+                    <p><strong>Ғылыми жетістіктері:</strong> 120 ғылыми мақала, 5 монография, ҚР БҒМ гранттарының жеңімпазы. Еуропа және Азия университеттерінде гостың лекциялар.</p>
+                </div>
+            </div>
+            
+            <div class="teacher-card">
+                <img src="https://abaiuniversity.edu.kz/wp-content/uploads/2023/05/teacher3.jpg" alt="Ошанова Нұржамал">
+                <div class="teacher-info">
+                    <h4>Ошанова Нұржамал Тұрашқызы</h4>
+                    <p><strong>Лауазымы:</strong> Кафедра меңгерушісі, доцент</p>
+                    <p><strong>Ғылыми дәрежесі:</strong> Педагогика ғылымдарының кандидаты</p>
+                    <p><strong>Тәжірибесі:</strong> 12 жыл</p>
+                    <p><strong>Ғылыми бағыты:</strong> Білімді ақпараттандыру, STEM-білім беру</p>
+                    <p><strong>Сабақ беретін пәндер:</strong> Ақпараттық технологиялар негіздері, Білім беруді ақпараттандыру, STEM-педагогика</p>
+                    <p><strong>Ғылыми жетістіктері:</strong> 35 ғылыми мақала, 3 оқу құралы авторы. STEM-білім беру бағдарламасын әзірлеуші.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="contact">
+        <h2><i class="fas fa-address-card"></i> Байланыс ақпараты</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Факультеттің мекенжайы</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-building"></i> Алматы қаласы, Төле би көшесі, 86</p>
+                    <p><i class="fas fa-map-pin"></i> №5 оқу корпусы</p>
+                    <p><i class="fas fa-door-open"></i> 203 кабинет (деканат)</p>
+                    <p><i class="fas fa-subway"></i> Жуалы метро станциясына жақын</p>
+                    <p><i class="fas fa-bus"></i> Автобус маршруттары: 28, 45, 65, 99</p>
+                </div>
+                <div class="map-container">
+                    <span>Алматы қаласы, Төле би көшесі, 86</span>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <h3><i class="fas fa-phone-alt"></i> Телефондар</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> Деканат: +7 (727) 272-75-87</p>
+                    <p><i class="fas fa-phone"></i> Физика кафедрасы: +7 (727) 272-75-88</p>
+                    <p><i class="fas fa-phone"></i> Математика кафедрасы: +7 (727) 272-75-89</p>
+                    <p><i class="fas fa-phone"></i> Информатика кафедрасы: +7 (727) 272-75-90</p>
+                    <p><i class="fas fa-fax"></i> Факс: +7 (727) 272-75-86</p>
+                    <p><i class="fas fa-mobile-alt"></i> Құжаттар бөлімі: +7 (701) 123-45-67</p>
+                </div>
+                
+                <h3><i class="fas fa-clock"></i> Жұмыс кестесі</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-calendar-day"></i> Дүйсенбі-жұма: 09:00 - 18:00</p>
+                    <p><i class="fas fa-coffee"></i> Түскі үзіліс: 13:00 - 14:00</p>
+                    <p><i class="fas fa-calendar-times"></i> Демалыс күндері: Сенбі, жексенбі</p>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <h3><i class="fas fa-envelope"></i> Электрондық пошта</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Деканат: mfi_dean@abaiuniversity.edu.kz</p>
+                    <p><i class="fas fa-envelope"></i> Құжаттарға: mfi_docs@abaiuniversity.edu.kz</p>
+                    <p><i class="fas fa-envelope"></i> Ғылыми бөлім: mfi_science@abaiuniversity.edu.kz</p>
+                    <p><i class="fas fa-envelope"></i> Оқу бөлімі: mfi_education@abaiuniversity.edu.kz</p>
+                    <p><i class="fas fa-envelope"></i> Халықаралық байланыстар: mfi_international@abaiuniversity.edu.kz</p>
+                    <p><i class="fas fa-envelope"></i> Студенттік өмір: mfi_student@abaiuniversity.edu.kz</p>
+                </div>
+                
+                <h3><i class="fas fa-comments"></i> Әлеуметтік желілер</h3>
+                <div class="contact-info">
+                    <p><i class="fab fa-telegram"></i> Telegram: @abai_mfi</p>
+                    <p><i class="fab fa-instagram"></i> Instagram: @abai_mfi</p>
+                    <p><i class="fab fa-facebook"></i> Facebook: @abaiuniversity_mfi</p>
+                    <p><i class="fab fa-youtube"></i> YouTube: @abai_mfi_official</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com/abaiuniversity" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/abaiuniversity" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/abaiuniversity" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://t.me/abaiuniversity" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://twitter.com/abaiuniversity" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        
+        <div class="footer-text">
+            <p>Абай атындағы Қазақ ұлттық педагогикалық университеті - Қазақстандағы білім беру саласының көшбасшысы. 1928 жылы құрылған университет педагогикалық білім беру саласында көшбасшы болып табылады.</p>
+            <p>Математика, Физика және Информатика факультеті - университеттің ең көне факультеттерінің бірі, 1928 жылдан бастап жоғары білікті мамандар даярлап келеді.</p>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2024 Абай атындағы Қазақ ұлттық педагогикалық университеті</p>
+            <p>Математика, Физика және Информатика факультеті</p>
+            <p>Барлық құқықтар қорғалған</p>
+        </div>
+    </footer>
+
+    <div class="floating-btn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Navigation between sections
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        const sections = document.querySelectorAll('main section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const targetId = link.dataset.section;
+                sections.forEach(sec => {
+                    sec.classList.remove('active');
+                    sec.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
+                document.getElementById(targetId).classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Program tabs
+        function showProgram(level) {
+            document.querySelectorAll('.program-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            document.querySelectorAll('.program-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(level).classList.add('active');
+        }
+        
+        // Announcements
+        function showAnnouncement(id) {
+            sections.forEach(s => s.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function goBack() {
+            sections.forEach(s => s.style.display = 'none');
+            document.getElementById('announcements').style.display = 'block';
+            document.getElementById('announcements').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Back to top button
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Show home section by default
+        window.addEventListener('load', () => {
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('home').classList.add('active');
+            
+            // Add active class to first program tab
+            document.querySelector('.program-tabs button').classList.add('active');
+        });
+        
+        // Handle floating button visibility
+        window.addEventListener('scroll', () => {
+            const floatingBtn = document.querySelector('.floating-btn');
+            if (window.scrollY > 300) {
+                floatingBtn.style.display = 'flex';
+            } else {
+                floatingBtn.style.display = 'none';
+            }
+        });
+        
+        // Animation for stats
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = +stat.innerText.replace('+', '');
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                function updateNumber(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    const value = Math.floor(progress * target);
+                    
+                    stat.innerText = value === target ? target + (stat.innerText.includes('+') ? '+' : '') : value;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    }
+                }
+                
+                requestAnimationFrame(updateNumber);
+            });
+        }
+        
+        // Initialize stats animation when home section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.getElementById('home'));
+    </script>
+</body>
+</html>
